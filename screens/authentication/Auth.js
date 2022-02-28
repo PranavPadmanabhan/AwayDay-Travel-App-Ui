@@ -1,14 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Image, ImageBackground, Pressable, StatusBar, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import styles from './styles'
 import Icon from "react-native-vector-icons/MaterialIcons"
 
-function Auth() {
+function Auth({navigation}) {
+
+    const [checked, setchecked] = useState(false);
+    const [verified, setverified] = useState(false);
+    const [name, setname] = useState(null)
+
     return (
         <View  style={styles.background}>
             <StatusBar translucent backgroundColor={"transparent"}/>
             <View style={styles.IconBackground}>
-            <Icon name='arrow-back' color={"grey"} size={28}/>
+            <Icon onPress={() => navigation.pop()} name='arrow-back' color={"grey"} size={28}/>
             </View>
             <View style={styles.Textcontainer}>
                 <Text style={styles.heading1}>Welcome to</Text>
@@ -21,15 +26,28 @@ function Auth() {
                 <Icon name='photo-camera' color={"white"} size={22}/>
                 </View>
             </View>
-            <TextInput style={styles.TextInput}/>
-            <TextInput style={styles.TextInput}/>
-            <View style={styles.row}>
-                <View>
-
-                </View>
-                <Text style={styles.bottomText}>I accept all the<Text style={styles.innerText}>Terms & Conditions</Text></Text>
+            <View  style={styles.firstTextInput}>
+            <TextInput onChangeText={(text) => setname(text)} onEndEditing={() => setverified(true)} style={styles.Input} placeholder='Enter Name' placeholderTextColor={"grey"}/>
+            {
+                verified && (name.length > 5 ? (<Icon name='verified' color={"green"} size={25}/>):null)
+            }
             </View>
-            <TouchableOpacity style={styles.Btn}>
+            <View style={styles.secondTextInput}>
+            <TextInput style={styles.Input}  placeholder='Enter Mobile Number' placeholderTextColor={"grey"}/>
+            </View>
+            <View style={styles.row}>
+                <Pressable style={styles.check} onPress={() => setchecked(!checked)}>
+                {
+                    checked ? (<Icon name='check-box' color={"#5c42ae"} size={25}/>):( <Icon name='check-box-outline-blank' color={"#5c42ae"} size={25}/> )
+                }
+                </Pressable>
+                <Text style={styles.bottomText}>I accept all the <Text style={styles.innerText}>Terms & Conditions</Text></Text>
+            </View>
+            <TouchableOpacity onPress={() =>{
+                if(checked){
+                    navigation.navigate("OtpScreen")
+                }
+            }}  style={[styles.Btn,{backgroundColor:checked?"#5c42ae":"grey"}]}>
                 <Text style={styles.BtnText}>Send OTP</Text>
             </TouchableOpacity>
 

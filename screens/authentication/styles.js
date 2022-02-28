@@ -69,8 +69,60 @@ const styles = StyleSheet.create({
         justifyContent:"center"
 
     },
+    firstTextInput:{
+        marginLeft:20,
+        marginRight:20,
+        borderBottomColor:"grey",
+        borderBottomWidth:1.5,
+        marginTop:height*0.05,
+        fontSize:18,
+        width:width*0.9,
+        maxHeight:50,
+        flexDirection:"row",
+        alignItems:"center",
+        justifyContent:"space-between"
+    },
+    secondTextInput:{
+        marginLeft:20,
+        marginRight:20,
+        borderBottomColor:"grey",
+        borderBottomWidth:1.5,
+        marginTop:height*0.05,
+        fontSize:18,
+        width:width*0.9,
+        maxHeight:50,
+        flexDirection:"row",
+        alignItems:"center",
+        justifyContent:"space-between"
+    },
+    Input:{
+        width:"90%",
+        height:"100%",
+        fontSize:18,
+        color:"black"
+    },
+    verified:{
+       position:"absolute"
+    },
+    row:{
+        flexDirection:"row",
+        alignItems:"center",
+        marginLeft:25,
+        marginTop:height*0.02
+    },
+    check:{
+        marginRight:10
+    },
+    bottomText:{
+        color:"#5c42ae",
+        fontWeight:"500",
+        fontSize:15,
+    },
+    innerText:{
+        fontWeight:"700",
+    },
     Btn:{
-        width:width * 0.8,
+        width:width * 0.85,
         backgroundColor:"#5c42ae",
         alignItems:"center",
         justifyContent:"center",
